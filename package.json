@@ -1,0 +1,11 @@
+{
+  "name": "book-futsal",
+  "version": "1.0.0",
+  "description": "This is an webapp to book futsal. I may scale it later to book events too.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
