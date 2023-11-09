@@ -23,6 +23,7 @@ nav {
   font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
+  cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 #navbar li a:hover,

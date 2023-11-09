@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useContext} from 'react';
 import './NavBar.css';
 
-const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+import PageValue from '../Contex';
 
+const Navbar = () => {
+  const {pageState, setpageState}= useContext(PageValue);
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
   return (
     <>
       <nav className='navbar'>
@@ -19,16 +21,16 @@ const Navbar = () => {
         <div>
           <ul id='navbar' className={isMobileMenuOpen ? "#navbar active" : "navbar"}>
             <li>
-              <a className='active' href='index.html'>Home</a>
+              <a className='active' onClick={()=>{setpageState('main')}}>Home</a>
             </li>
             <li>
-              <a href='index.html'>SignUp</a>
+              <a onClick={()=>{setpageState('SignUp')}} >SignUp</a>
             </li>
             <li>
-              <a href='index.html'>SignIn</a>
+              <a onClick={()=>{setpageState('SignIn')}}>SignIn</a>
             </li>
             <li>
-              <a href='index.html'>Contact</a>
+              <a onClick={()=>{setpageState('Contact')}}>Contact</a>
             </li>
           </ul>
         </div>
