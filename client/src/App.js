@@ -4,6 +4,7 @@ import Footer from './component/NavBar/Footer';
 import MainPage from './component/MainPage/MainPage';
 import SignUp from './component/SignUp/SignUp';
 import  PageValue  from './component/Contex';
+import SignIn from './component/SignIn/SignIn'
 
 function App() {
   const [pageState, setpageState] = useState("main");
@@ -13,7 +14,8 @@ function App() {
       <Navbar />
       {pageState === "main" && <MainPage />}
       {pageState === "SignUp" && <SignUp />}
-      {pageState === "SignIn" && <MainPage />}
+      {pageState === "SignIn" && <SignIn />}
+      {pageState === "Contact" && <MainPage />}
       <Footer />
     </PageValue.Provider>
     </div>

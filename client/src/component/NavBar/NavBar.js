@@ -4,7 +4,7 @@ import './NavBar.css';
 import PageValue from '../Contex';
 
 const Navbar = () => {
-  const {pageState, setpageState}= useContext(PageValue);
+const {pageState, setpageState}= useContext(PageValue);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => {
@@ -21,16 +21,16 @@ const Navbar = () => {
         <div>
           <ul id='navbar' className={isMobileMenuOpen ? "#navbar active" : "navbar"}>
             <li>
-              <a className='active' onClick={()=>{setpageState('main')}}>Home</a>
+              <a className='active' onClick={()=>{setpageState('main');setIsMobileMenuOpen(false);}}>Home</a>
             </li>
             <li>
-              <a onClick={()=>{setpageState('SignUp')}} >SignUp</a>
+              <a onClick={()=>{setpageState('SignUp');setIsMobileMenuOpen(false);}} >SignUp</a>
             </li>
             <li>
-              <a onClick={()=>{setpageState('SignIn')}}>SignIn</a>
+              <a onClick={()=>{setpageState('SignIn');setIsMobileMenuOpen(false);}}>SignIn</a>
             </li>
             <li>
-              <a onClick={()=>{setpageState('Contact')}}>Contact</a>
+              <a onClick={()=>{setpageState('Contact');setIsMobileMenuOpen(false);}}>Contact</a>
             </li>
           </ul>
         </div>
