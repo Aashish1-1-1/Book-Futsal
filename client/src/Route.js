@@ -6,6 +6,7 @@ import SignUp from './component/SignUp/SignUp';
 import Navbar from './component/NavBar/NavBar';
 import Footer from './component/NavBar/Footer'; 
 import NotFoundPage from './component/Notfound';
+import UserPage from './component/User/User';
 
 const Approuter = () => {
   return (
@@ -16,7 +17,7 @@ const Approuter = () => {
           <Route path="/" element={<MainPage/>} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
-          <Route path='/Contact' element={<MainPage />} />
+          <Route path='/Contact' element={<UserPage />} />
           <Route path="*" element={<NotFoundPage />} />
           </Routes>
         <Footer />
