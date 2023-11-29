@@ -29,12 +29,12 @@ const [showOptions, setShowOptions] = useState(false);
       <h1>Welcome to Book-Futsal, Select the futsal Grounds</h1>
       <div className="futsal-list-container">
         <br />
-      <h2>---->List of Registered Futsal Grounds:</h2>
+      <h2>.List of Registered Futsal Grounds:</h2>
      
       <ul>
         {Futsals.map((futsal, index) => (
         <li key={index}>
-        <p>{index+1}.&nbsp;  &nbsp; Name: {futsal.name} &nbsp;  &nbsp; Location: {futsal.location}</p>
+        <a href='Contact/Book'>{index+1}.&nbsp;  &nbsp; Name: {futsal.name} &nbsp;  &nbsp; Location: {futsal.location}</a>
         </li>
         ))}
       </ul>
