@@ -1,7 +1,7 @@
-// UserPage.js
 import React, { useState} from 'react';
 import './User.css';
 import {Futsals} from './Futsal.js';
+import images from "./images.jpeg";
 
 const UserPage = () => {
 const [showOptions, setShowOptions] = useState(false);
@@ -14,7 +14,7 @@ const [showOptions, setShowOptions] = useState(false);
   return (
     <div className="user-page-container">
       <div className="avatar-container" onClick={handleAvatarClick}>
-        <img src='/image.jpeg' alt='Avatar'/>
+        <img src={images} alt='Avatar'/>
         {/* You can add an image or an icon as per your design */}
       </div>
       {showOptions && (

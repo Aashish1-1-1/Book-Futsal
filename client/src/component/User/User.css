@@ -7,22 +7,18 @@
 }
 
 .avatar-container {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ccc;
-  cursor: pointer;
-  margin-right: 10px;
-  position: absolute;
-  top: 120px; /* Adjust as needed */
-  right: 20px;
-   display: flex;
-  justify-content: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: fixed;
+  left:90%;
 }
 .avatar-container img{
-  max-width: 100%;
-  max-height: 100%;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  object-fit: cover;
 }
 
 .profile-options {
