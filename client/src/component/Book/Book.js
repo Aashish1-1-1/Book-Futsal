@@ -1,33 +1,39 @@
 import React, { useState } from 'react';
+import './Book.css';
 
 const Book = () => {
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedTimes, setSelectedTimes] = useState([]);
 
   const timeSlots = Array.from({ length: 18 }, (_, index) => index + 4);
 
   const handleTimeClick = (time) => {
-    setSelectedTime(time);
+    if (selectedTimes.includes(time)) {
+      // Deselect if already selected
+      setSelectedTimes((prevSelected) =>
+        prevSelected.filter((selected) => selected !== time)
+      );
+    } else {
+      // Select with Ctrl key or add to a new selection
+      setSelectedTimes((prevSelected) =>
+        prevSelected.includes(time) ? prevSelected : [...prevSelected, time]
+      );
+    }
   };
 
   return (
     <>
-      <div>
+      <div className="booking-container">
         <h1>Futsal Booking Page</h1>
         <div>
-          <p>Select a time slot:</p>
-          <div style={{ display: 'flex' }}>
+          <p>Select time slots:</p>
+          <div className="time-slot-container">
             {timeSlots.map((time) => (
               <div
                 key={time}
                 onClick={() => handleTimeClick(time)}
-                style={{
-                  border: '1px solid #ccc',
-                  padding: '10px',
-                  margin: '5px',
-                  cursor: 'pointer',
-                  backgroundColor: selectedTime === time ? '#007bff' : '#fff',
-                  color: selectedTime === time ? '#fff' : '#000',
-                }}
+                className={`time-slot ${
+                  selectedTimes.includes(time) ? 'selected-time' : ''
+                }`}
               >
                 {`${time}:00 - ${time + 1}:00`}
               </div>
@@ -35,14 +41,29 @@ const Book = () => {
           </div>
         </div>
         <div>
-          {selectedTime && (
-            <p>Selected Time: {`${selectedTime}:00 - ${selectedTime + 1}:00`}</p>
+          {selectedTimes.length > 0 && (
+            <p className="selected-time">
+              Selected Times:{' '}
+              {selectedTimes.map((selected) => (
+                <span key={selected}>{`${selected}:00 - ${
+                  selected + 1
+                }:00, `}</span>
+              ))}
+            </p>
+          )}
+        </div>
+        <div>
+          {selectedTimes.length>0&&(
+          <p className='price'>
+              Total Price:{' '}
+              <span>{selectedTimes.length*1000}</span>
+            </p>
           )}
         </div>
       </div>
 
-      <div class="content">
-        <div class="container">
+      <div className="content">
+        <div className="container">
           {/* The rest of your existing JSX code for the DoctorBooking component */}
         </div>
       </div>
