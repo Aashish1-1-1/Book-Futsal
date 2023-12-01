@@ -5,7 +5,7 @@ import SignIn from './component/SignIn/SignIn';
 import SignUp from './component/SignUp/SignUp';
 import Navbar from './component/NavBar/NavBar';
 import Footer from './component/NavBar/Footer'; 
-import NotFoundPage from './component/Notfound';
+import NotFoundPage from './component/Notfound/Notfound';
 import UserPage from './component/User/User';
 import Book from './component/Book/Book';
 const Approuter = () => {

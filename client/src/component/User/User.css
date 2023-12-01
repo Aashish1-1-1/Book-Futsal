@@ -34,30 +34,37 @@
   list-style: none;
 }
 
-.futsal-list-container {
-  margin-top: 20px;
-}
-.futsal-list-container ul{
-  list-style: none;
-}
-.futsal-list-container ul li{
-  background: skyblue;
-  width:60% ;
-  height: 70px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 50px;
-  border-radius: 20px;
-}
-.futsal-list-container ul li:hover{
-  background-color: #3ebcf0;
-  }
-.futsal-list-container ul li a{
-  color: black;
-  text-decoration: none;
 
-  }
+.futsal-list-container {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.futsal-list-container h2 {
+  color: #007bff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #007bff;
+}
 /* Media query for responsiveness */
 @media screen and (max-width: 600px) {
   .user-page-container {
