@@ -16,23 +16,23 @@ return(
   <form>
       <label>
         Name:
-        <input type="text" name="name" value={formData.name} onChange={handleChange} />
+        <input type="text" name="name" value={formData.name} onChange={handleChange} required/>
       </label>
       <label>
           Contact:
-          <input type="tel" name="contact" value={formData.contact} onChange={handleChange} />
+          <input type="tel" name="contact" value={formData.contact} onChange={handleChange} required/>
       </label>
       <label>
         Email:
-        <input type="email" name="email" value={formData.email} onChange={handleChange} />
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required/>
       </label>
       <label>
         Password:
-        <input type="password" name="password" value={formData.password} onChange={handleChange} />
+        <input type="password" name="password" value={formData.password} onChange={handleChange} required/>
       </label>
       <label>
         Citizenship Image:
-        <input type="file" name="citizenshipImage" onChange={handleChange} accept="image/*" />
+        <input type="file" name="citizenshipImage" onChange={handleChange} accept="image/*" required/>
       </label>
       <button type="submit">Sign Up</button>
     </form>

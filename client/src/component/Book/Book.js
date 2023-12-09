@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import './Book.css';
 
 const Book = () => {
+
+  const [formData, setFormData] = useState({
+    Time: "",
+    Price: '',
+  });
   const [selectedTimes, setSelectedTimes] = useState([]);
 
   const timeSlots = Array.from({ length: 18 }, (_, index) => index + 4);
@@ -12,14 +17,27 @@ const Book = () => {
       setSelectedTimes((prevSelected) =>
         prevSelected.filter((selected) => selected !== time)
       );
+      setFormData({ ...formData, Time: selectedTimes, Price:(selectedTimes.length-1)*1000 })
     } else {
       // Select with Ctrl key or add to a new selection
       setSelectedTimes((prevSelected) =>
         prevSelected.includes(time) ? prevSelected : [...prevSelected, time]
       );
+      setFormData({ ...formData, Time: selectedTimes, Price:(selectedTimes.length+1)*1000 })
     }
   };
-
+ const selectedTimesJSX = (
+    <div>
+      {selectedTimes.length > 0 && (
+        <p className="selected-time">
+          Selected Times:{' '}
+          {selectedTimes.map((selected) => (
+            <span key={selected}>{`${selected}:00 - ${selected + 1}:00, `}</span>
+          ))}
+        </p>
+      )}
+    </div>
+  );
   return (
     <>
       <div className="booking-container">
@@ -41,16 +59,7 @@ const Book = () => {
           </div>
         </div>
         <div>
-          {selectedTimes.length > 0 && (
-            <p className="selected-time">
-              Selected Times:{' '}
-              {selectedTimes.map((selected) => (
-                <span key={selected}>{`${selected}:00 - ${
-                  selected + 1
-                }:00, `}</span>
-              ))}
-            </p>
-          )}
+          {selectedTimesJSX}
         </div>
         <div>
           {selectedTimes.length>0&&(
@@ -63,9 +72,14 @@ const Book = () => {
       </div>
 
       <div className="content">
-        <div className="container">
-          {/* The rest of your existing JSX code for the DoctorBooking component */}
-        </div>
+        <form>
+             <label for="Time">Time:</label>
+        <input type="text" id="Time" name="Time" value={formData.Time}  readOnly required/>
+        <label for="Price">Price:</label>
+        <input type="number" id="Price" name="Price"  value={formData.Price} readOnly required/>
+
+        <button type="submit">Book</button>
+        </form>
       </div>
     </>
   );
