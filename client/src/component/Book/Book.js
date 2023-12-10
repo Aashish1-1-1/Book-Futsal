@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Book.css';
+import images from "../User/images.jpeg";
 
 const Book = () => {
   const [formData, setFormData] = useState({
@@ -46,8 +47,30 @@ const Book = () => {
     </div>
   );
 
+  const [showOptions, setShowOptions] = useState(false);
+
+  const handleAvatarClick = () => {
+    setShowOptions(!showOptions);
+  };
+
   return (
     <>
+      
+      <div className="user-page-container">
+      <div className="avatar-container" onClick={handleAvatarClick}>
+        <img src={images} alt='Avatar'/>
+        {/* You can add an image or an icon as per your design */}
+      </div>
+      {showOptions && (
+        <div className="profile-options">
+          <p>User A</p>
+          <ul>
+            <li>Settings</li>
+            <li>Sign Out</li>
+          </ul>
+        </div>
+      )}
+      </div>
       <div className="booking-container">
         <h1>Futsal Booking Page</h1>
         <div>
@@ -86,7 +109,7 @@ const Book = () => {
           <button type="submit">Book</button>
         </form>
       </div>
-    </>
+   </>
   );
 };
 
