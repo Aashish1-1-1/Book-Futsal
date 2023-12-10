@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Book.css';
 
 const Book = () => {
-
   const [formData, setFormData] = useState({
     Time: "",
     Price: '',
@@ -11,22 +10,30 @@ const Book = () => {
 
   const timeSlots = Array.from({ length: 18 }, (_, index) => index + 4);
 
+  useEffect(() => {
+    // Use useEffect to update form data when selectedTimes changes
+    setFormData({
+      ...formData,
+      Time: selectedTimes,
+      Price: selectedTimes.length * 1000,
+    });
+  }, [selectedTimes, formData]);
+
   const handleTimeClick = (time) => {
     if (selectedTimes.includes(time)) {
       // Deselect if already selected
       setSelectedTimes((prevSelected) =>
         prevSelected.filter((selected) => selected !== time)
       );
-      setFormData({ ...formData, Time: selectedTimes, Price:(selectedTimes.length-1)*1000 })
     } else {
       // Select with Ctrl key or add to a new selection
       setSelectedTimes((prevSelected) =>
         prevSelected.includes(time) ? prevSelected : [...prevSelected, time]
       );
-      setFormData({ ...formData, Time: selectedTimes, Price:(selectedTimes.length+1)*1000 })
     }
   };
- const selectedTimesJSX = (
+
+  const selectedTimesJSX = (
     <div>
       {selectedTimes.length > 0 && (
         <p className="selected-time">
@@ -38,6 +45,7 @@ const Book = () => {
       )}
     </div>
   );
+
   return (
     <>
       <div className="booking-container">
@@ -58,14 +66,11 @@ const Book = () => {
             ))}
           </div>
         </div>
+        <div>{selectedTimesJSX}</div>
         <div>
-          {selectedTimesJSX}
-        </div>
-        <div>
-          {selectedTimes.length>0&&(
-          <p className='price'>
-              Total Price:{' '}
-              <span>{selectedTimes.length*1000}</span>
+          {selectedTimes.length > 0 && (
+            <p className="price">
+              Total Price: <span>{selectedTimes.length * 1000}</span>
             </p>
           )}
         </div>
@@ -73,12 +78,12 @@ const Book = () => {
 
       <div className="content">
         <form>
-             <label for="Time">Time:</label>
-        <input type="text" id="Time" name="Time" value={formData.Time}  readOnly required/>
-        <label for="Price">Price:</label>
-        <input type="number" id="Price" name="Price"  value={formData.Price} readOnly required/>
+          <label htmlFor="Time">Time:</label>
+          <input type="text" id="Time" name="Time" value={formData.Time} readOnly required />
+          <label htmlFor="Price">Price:</label>
+          <input type="number" id="Price" name="Price" value={formData.Price} readOnly required />
 
-        <button type="submit">Book</button>
+          <button type="submit">Book</button>
         </form>
       </div>
     </>
