@@ -6,33 +6,6 @@
   padding: 20px;
 }
 
-.avatar-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: fixed;
-  left:90%;
-}
-.avatar-container img{
-  border-radius: 50%;
-  height: 4rem;
-  width: 4rem;
-  object-fit: cover;
-}
-
-.profile-options {
-  position: absolute;
-  top: 160px; /* Adjust as needed */
-  right: 50px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 1;
-}
-.profile-options ul{
-  list-style: none;
-}
 
 
 .futsal-list-container {

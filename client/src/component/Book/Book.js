@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Book.css';
-import images from "../User/images.jpeg";
-
 const Book = () => {
   const [formData, setFormData] = useState({
     Time: "",
@@ -46,31 +44,8 @@ const Book = () => {
       )}
     </div>
   );
-
-  const [showOptions, setShowOptions] = useState(false);
-
-  const handleAvatarClick = () => {
-    setShowOptions(!showOptions);
-  };
-
   return (
-    <>
-      
-      <div className="user-page-container">
-      <div className="avatar-container" onClick={handleAvatarClick}>
-        <img src={images} alt='Avatar'/>
-        {/* You can add an image or an icon as per your design */}
-      </div>
-      {showOptions && (
-        <div className="profile-options">
-          <p>User A</p>
-          <ul>
-            <li>Settings</li>
-            <li>Sign Out</li>
-          </ul>
-        </div>
-      )}
-      </div>
+    <> 
       <div className="booking-container">
         <h1>Futsal Booking Page</h1>
         <div>
@@ -97,19 +72,20 @@ const Book = () => {
             </p>
           )}
         </div>
+          <div className="content">
+              <form>
+                <label htmlFor="Time">Time:</label>
+                <input type="text" id="Time" name="Time" value={formData.Time} readOnly required />
+                <label htmlFor="Price">Price:</label>
+                <input type="number" id="Price" name="Price" value={formData.Price} readOnly required />
+
+                <button type="submit">Book</button>
+              </form>
+          </div>
+
       </div>
 
-      <div className="content">
-        <form>
-          <label htmlFor="Time">Time:</label>
-          <input type="text" id="Time" name="Time" value={formData.Time} readOnly required />
-          <label htmlFor="Price">Price:</label>
-          <input type="number" id="Price" name="Price" value={formData.Price} readOnly required />
-
-          <button type="submit">Book</button>
-        </form>
-      </div>
-   </>
+     </>
   );
 };
 

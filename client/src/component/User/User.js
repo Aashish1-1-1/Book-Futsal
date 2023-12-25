@@ -1,32 +1,11 @@
-import React, { useState} from 'react';
+import React from 'react';
 import './User.css';
 import {Futsals} from './Futsal.js';
-import images from "./images.jpeg";
 
 const UserPage = () => {
-const [showOptions, setShowOptions] = useState(false);
-
-  const handleAvatarClick = () => {
-    setShowOptions(!showOptions);
-  };
-
-
   return (
     <div className="user-page-container">
-      <div className="avatar-container" onClick={handleAvatarClick}>
-        <img src={images} alt='Avatar'/>
-        {/* You can add an image or an icon as per your design */}
-      </div>
-      {showOptions && (
-        <div className="profile-options">
-          <p>User A</p>
-          <ul>
-            <li>Settings</li>
-            <li>Sign Out</li>
-          </ul>
-        </div>
-      )}
-      <h1>Welcome to Book-Futsal, Select the futsal Grounds</h1>
+        <h1>Welcome to Book-Futsal, Select the futsal Grounds</h1>
       <div className="futsal-list-container">
         <br />
       <h2>.List of Registered Futsal Grounds:</h2>

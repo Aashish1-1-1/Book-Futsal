@@ -1,6 +1,5 @@
 package.json
 package-lock.json
-client/node_modules
-client/package-lock.json
-client/package.json
-client/README.md
+/client/node_modules
+/client/package-lock.json
+/client/package.json
