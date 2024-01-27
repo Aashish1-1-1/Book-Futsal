@@ -16,7 +16,7 @@ func HandelLogin(c *gin.Context){
 
 	email := data.Email
 	password := data.Password
-
+  
 	c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully", "email": email, "password": password})
 }
 
@@ -35,3 +35,4 @@ func HandelSignUP(c *gin.Context){
 
 	c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully", "email": email, "password": password,"name": name, "contact": contact})
 }
+

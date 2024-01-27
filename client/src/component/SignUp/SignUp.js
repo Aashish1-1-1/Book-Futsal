@@ -17,7 +17,7 @@ const SignUp=()=>{
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8080/signup', {
+      const response = await fetch('http://localhost:6996/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
