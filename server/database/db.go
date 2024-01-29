@@ -17,8 +17,8 @@ func Init(){
   		log.Fatal("Error loading .env file")
   	}
   
- // 	psqlInfo := fmt.Sprintf("%s",os.Getenv("DB_URI"))
-      psqlInfo := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",os.Getenv("DB_USER"),os.Getenv("DB_PASSWORD"),os.Getenv("DB_NAME"))
+// 	psqlInfo := fmt.Sprintf("%s",os.Getenv("DB_URI"))
+     psqlInfo := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",os.Getenv("DB_USER"),os.Getenv("DB_PASSWORD"),os.Getenv("DB_NAME"))
   	db, err := sql.Open("postgres", psqlInfo)
   	if err != nil {
   		log.Fatal(err)
@@ -38,4 +38,12 @@ func Init(){
       fmt.Println("Closed connection")
 
     } 
+  }
+
+  func MakeQuery(query string)  {
+ //   row,err:=db.Query(query)
+ //   if err!=nil{
+  //    log.Fatal(err)
+ //   }
+    fmt.Println("Query Successfully in row:%s",query)
   }

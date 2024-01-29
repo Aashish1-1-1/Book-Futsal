@@ -10,13 +10,13 @@ const Book = () => {
   const timeSlots = Array.from({ length: 18 }, (_, index) => index + 4);
 
   useEffect(() => {
-    // Use useEffect to update form data when selectedTimes changes
-    setFormData({
-      ...formData,
-      Time: selectedTimes,
-      Price: selectedTimes.length * 1000,
-    });
-  }, [selectedTimes, formData]);
+  // Use useEffect to update form data when selectedTimes changes
+  setFormData({
+    ...formData,
+    Time: selectedTimes,
+    Price: selectedTimes.length * 1000,
+  });
+}, [selectedTimes]); // Remove formData from the dependency array
 
   const handleTimeClick = (time) => {
     if (selectedTimes.includes(time)) {
