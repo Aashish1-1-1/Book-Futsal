@@ -19,13 +19,13 @@ func HandelLogin(c *gin.Context){
 	password := data.Password
   exist, err:= database.MakeSearchQuery(email,password)
   if err!=nil{
-    c.JSON(http.StatusBadRequest,gin.H{"Error":"User not found"})
+    c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
   }else{
 
       if exist{
-          c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully", "email": email, "password": password})
+          c.JSON(http.StatusOK, gin.H{"message": "Logged in "},)
       }else{
-         c.JSON(http.StatusBadRequest,gin.H{"Error":"User not found"})
+         c.JSON(http.StatusBadRequest,gin.H{"Error":"Email or password is incorrect"})
     }
   }
 }
@@ -43,12 +43,10 @@ func HandelSignUP(c *gin.Context){
 	email := data.Email
 	password := data.Password
   err := database.MakeInsertQuery(name,contact,email,password)
-  //query := fmt.Sprintf("insert into user(username,email,password) values (%s,%s,%s);",name,email,password)
- // database.MakeInsertQuery(query)
- if err!=nil{
+  if err!=nil{
     c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
 		return
- }
-	c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully", "email": email, "password": password,"name": name, "contact": contact})
+  }
+	c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully"})
 }
 
