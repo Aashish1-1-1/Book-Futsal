@@ -3,10 +3,9 @@ package Auth
 import(
   "bookfutsal/models"
   "bookfutsal/database"
-
+  
   "github.com/gin-gonic/gin"
   "net/http"
-  "fmt"
 )
 func HandelLogin(c *gin.Context){
   var data User.FormData
@@ -34,8 +33,13 @@ func HandelSignUP(c *gin.Context){
   contact :=data.Number
 	email := data.Email
 	password := data.Password
-  query := fmt.Sprintf("%s,%d,%s,%s",name,contact,email,password)
-  database.MakeQuery(query)
+  err := database.MakeInsertQuery(name,contact,email,password)
+  //query := fmt.Sprintf("insert into user(username,email,password) values (%s,%s,%s);",name,email,password)
+ // database.MakeInsertQuery(query)
+ if err!=nil{
+    c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
+		return
+ }
 	c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully", "email": email, "password": password,"name": name, "contact": contact})
 }
 
