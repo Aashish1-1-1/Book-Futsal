@@ -44,7 +44,31 @@ func MakeInsertQuery(name string, contact int64,email string,password string) er
   CloseDB()
 	return nil
 }
+func MakeSearchQuery(email string,password string) (bool,error) {
+  Init()
+  row, err:= Db.Query(`SELECT "password" FROM "users" WHERE "email"=email`)
+  if err!=nil{
+    fmt.Println(err)
+    return false,err
+  }
+  var password1 string
+  
+  for row.Next(){
+       err = row.Scan(&password1)
 
+      if err!=nil{
+           fmt.Println("Notfound ",err)
+          return false,err
+      }
+  }
+  if password1!=password{
+      fmt.Println("Password not match")
+      return false,nil 
+  }
+  CloseDB()
+  fmt.Println("Password found")
+  return true,nil
+}
 func CloseDB() {
 	if Db != nil {
 		Db.Close()

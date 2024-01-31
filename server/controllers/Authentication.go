@@ -17,8 +17,17 @@ func HandelLogin(c *gin.Context){
 
 	email := data.Email
 	password := data.Password
-  
-	c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully", "email": email, "password": password})
+  exist, err:= database.MakeSearchQuery(email,password)
+  if err!=nil{
+    c.JSON(http.StatusBadRequest,gin.H{"Error":"User not found"})
+  }else{
+
+      if exist{
+          c.JSON(http.StatusOK, gin.H{"message": "Form submitted successfully", "email": email, "password": password})
+      }else{
+         c.JSON(http.StatusBadRequest,gin.H{"Error":"User not found"})
+    }
+  }
 }
 
 
