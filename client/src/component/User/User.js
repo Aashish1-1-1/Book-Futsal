@@ -1,6 +1,7 @@
 import React from 'react';
 import './User.css';
 import {Futsals} from './Futsal.js';
+import { Link } from 'react-router-dom';
 
 const UserPage = () => {
   return (
@@ -13,7 +14,7 @@ const UserPage = () => {
       <ul>
         {Futsals.map((futsal, index) => (
         <li key={index}>
-        <a href='Contact/Book'>{index+1}.&nbsp;  &nbsp; Name: {futsal.name} &nbsp;  &nbsp; Location: {futsal.location}</a>
+        <Link to='/Book'>{index+1}.&nbsp;  &nbsp; Name: {futsal.name} &nbsp;  &nbsp; Location: {futsal.location}</Link>
         </li>
         ))}
       </ul>

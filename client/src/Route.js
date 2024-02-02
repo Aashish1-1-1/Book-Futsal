@@ -18,7 +18,7 @@ const Approuter = () => {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path='/Contact' element={<UserPage />} />
-          <Route path='/Contact/Book' element={<Book />} />
+          <Route path='/Book' element={<Book />} />
           <Route path="*" element={<NotFoundPage />} />
           </Routes>
         <Footer />
