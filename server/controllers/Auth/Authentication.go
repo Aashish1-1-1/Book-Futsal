@@ -1,7 +1,7 @@
 package Auth
 
 import(
-  "bookfutsal/models"
+  "bookfutsal/models/User"
   "bookfutsal/database"
   
   "github.com/gin-gonic/gin"
@@ -39,10 +39,11 @@ func HandelSignUP(c *gin.Context){
     return
   }
   name := data.Name
-  contact :=data.Number
+  //contact :=data.Number
 	email := data.Email
 	password := data.Password
-  err := database.MakeInsertQuery(name,contact,email,password)
+  query:=`insert into "users"("username", "email","password") values($1, $2, $3)`
+  err := database.MakeInsertQuery(query,name,email,password);
   if err!=nil{
     c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
 		return

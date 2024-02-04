@@ -32,10 +32,10 @@ func Init() {
 }
 
 
-func MakeInsertQuery(name string, contact int64,email string,password string) error {
+func MakeInsertQuery(query string,values ...interface{}) error {
   Init()
-	prepare := `insert into "users"("username", "email","password") values($1, $2, $3)`
-	_, err := Db.Exec(prepare,name,email,password)
+//	prepare := `insert into "users"("username", "email","password") values($1, $2, $3)`
+	_, err := Db.Exec(query,values...)
 	if err != nil {
     fmt.Println(err)
 		return err

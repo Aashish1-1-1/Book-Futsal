@@ -1,7 +1,8 @@
 package Router
 
 import(
-  "bookfutsal/controllers"
+  "bookfutsal/controllers/Auth"
+  "bookfutsal/controllers/Book"
    "bookfutsal/database"
 
   "github.com/gin-gonic/gin"
@@ -18,6 +19,6 @@ func Routes() *gin.Engine{
     router.Use(cors.Default())
     router.POST("/login",Auth.HandelLogin)
     router.POST("/signup",Auth.HandelSignUP)
-
+    router.POST("/book",Book.HandelBook)
     return router
 }
