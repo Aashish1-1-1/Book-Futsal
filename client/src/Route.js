@@ -8,6 +8,8 @@ import Footer from './component/NavBar/Footer';
 import NotFoundPage from './component/Notfound/Notfound';
 import UserPage from './component/User/User';
 import Book from './component/Book/Book';
+import Registerfutsal from './component/Futsal/Registerfutsal';
+import LoginAsowner from './component/Futsal/LoginAsowner';
 const Approuter = () => {
   return (
     <Router>
@@ -15,6 +17,8 @@ const Approuter = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage/>} />
+          <Route path="/registerfutsal" element={<Registerfutsal/>} />
+          <Route path="/loginasowner" element={<LoginAsowner/>} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path='/Contact' element={<UserPage />} />

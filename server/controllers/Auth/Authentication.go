@@ -39,10 +39,10 @@ func HandelSignUP(c *gin.Context){
     return
   }
   name := data.Name
-  //contact :=data.Number
+  contact :=data.Number
 	email := data.Email
 	password := data.Password
-  query:=`insert into "users"("username", "email","password") values($1, $2, $3)`
+  query:=`insert into "users"("username","contact", "email","password") values($1, $2, $3, %4)`
   err := database.MakeInsertQuery(query,name,email,password);
   if err!=nil{
     c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})

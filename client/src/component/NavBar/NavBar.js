@@ -22,6 +22,9 @@ const Navbar = () => {
               <Link className='active' onClick={()=>{setIsMobileMenuOpen(false);}} to='/'>Home</Link>
             </li>
             <li>
+              <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/registerfutsal' >RegisterGround</Link>
+            </li>
+            <li>
               <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/SignUp' >SignUp</Link>
             </li>
             <li>

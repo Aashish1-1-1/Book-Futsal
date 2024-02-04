@@ -19,14 +19,15 @@ func HandelBook(c *gin.Context){
 
 	time := data.Time
 	price := data.Price
-  //exist, err:= database.MakeInsertQuery(Time,price)
+  query:=`insert into "TimeInterval"("time","price") values($1, $2)`
+  exist, err:= database.MakeInsertQuery(query,Time,price)
   fmt.Println(time,price)
- // if err!=nil{
- //   c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
- //   return
- // }else{
- //   
+  if err!=nil{
+  c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
+  return
+  }else{
+  
  c.JSON(http.StatusOK, gin.H{"message": "Booked successfully"})
- // }
+  }
 }
 
