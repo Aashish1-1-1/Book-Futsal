@@ -2,7 +2,7 @@ package Book
 
 import(
   "bookfutsal/models/Booking"
- // "bookfutsal/database"
+  "bookfutsal/database"
   "fmt" 
   "github.com/gin-gonic/gin"
   "net/http"
@@ -20,7 +20,7 @@ func HandelBook(c *gin.Context){
 	time := data.Time
 	price := data.Price
   query:=`insert into "TimeInterval"("time","price") values($1, $2)`
-  exist, err:= database.MakeInsertQuery(query,Time,price)
+  err:= database.MakeInsertQuery(query,time,price)
   fmt.Println(time,price)
   if err!=nil{
   c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
