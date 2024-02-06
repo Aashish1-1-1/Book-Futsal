@@ -60,7 +60,7 @@ func MakeSearchQuery(email string,password string) (bool,error) {
       return false,nil 
   }
   CloseDB()
-  fmt.Println("Email or password is incorrect")
+  fmt.Println("Password Matched")
   return true,nil
 }
 
