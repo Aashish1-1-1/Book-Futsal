@@ -20,5 +20,6 @@ func Routes() *gin.Engine{
     router.POST("/login",Auth.HandelLogin)
     router.POST("/signup",Auth.HandelSignUP)
     router.POST("/book",Book.HandelBook)
+    router.POST("/registerfutsal",Auth.HandelFutsalRegister)
     return router
 }
