@@ -14,7 +14,7 @@ const UserPage = () => {
       <ul>
         {Futsals.map((futsal, index) => (
         <li key={index}>
-        <Link to='/Book'>{index+1}.&nbsp;  &nbsp; Name: {futsal.name} &nbsp;  &nbsp; Location: {futsal.location}</Link>
+        <Link to='{index}'>{index+1}.&nbsp;  &nbsp; Name: {futsal.name} &nbsp;  &nbsp; Location: {futsal.location}</Link>
         </li>
         ))}
       </ul>

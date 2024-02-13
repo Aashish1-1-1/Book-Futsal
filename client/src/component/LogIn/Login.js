@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../SignUp/SignUp.css';
 
-const SignUp=()=>{
+const Login=()=>{
+   const navigate= useNavigate(); 
    const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -11,7 +13,6 @@ const SignUp=()=>{
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit= async (e)=>{
-
     e.preventDefault();
 
     try {
@@ -26,6 +27,7 @@ const SignUp=()=>{
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        navigate('/dashboard/' + result.user_id);
       } else {
         console.error('Failed to submit form');
       }
@@ -50,5 +52,5 @@ return(
   );
 };
 
-export default SignUp;
+export default Login;
 

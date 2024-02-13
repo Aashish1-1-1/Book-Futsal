@@ -25,10 +25,10 @@ const Navbar = () => {
               <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/registerfutsal' >RegisterGround</Link>
             </li>
             <li>
-              <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/SignUp' >SignUp</Link>
+              <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/signup' >SignUp</Link>
             </li>
             <li>
-              <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/SignIn'>SignIn</Link>
+              <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/login'>SignIn</Link>
             </li>
             <li>
               <Link onClick={()=>{setIsMobileMenuOpen(false);}} to='/Contact'>Contact</Link>

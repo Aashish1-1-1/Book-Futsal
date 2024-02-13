@@ -46,22 +46,23 @@ func MakeInsertQuery(query string,values ...interface{}) error {
 }
 
 
-func MakeSearchQuery(email string,password string) (bool,error) {
+func MakeSearchQuery(email string,password string) (int,error) {
   Init()
   var password1 string
-  query := `SELECT "password" FROM "users" WHERE "email"=$1`
-  err := Db.QueryRow(query, email).Scan(&password1)
+  var id int
+  query := `SELECT "user_id","password" FROM "users" WHERE "email"=$1`
+  err := Db.QueryRow(query, email).Scan(&id,&password1)
   if err!=nil{
     fmt.Println(err)
-    return false,err
+    return 0,err
   }
    if password1!=password{
       fmt.Println("Password not match")
-      return false,nil 
+      return 0,nil 
   }
   CloseDB()
   fmt.Println("Password Matched")
-  return true,nil
+  return id,nil
 }
 
 func CloseDB() {

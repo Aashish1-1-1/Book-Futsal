@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';   
 import MainPage from './component/MainPage/MainPage';
-import SignIn from './component/SignIn/SignIn';
+import Login from './component/LogIn/Login';
 import SignUp from './component/SignUp/SignUp';
 import Navbar from './component/NavBar/NavBar';
 import Footer from './component/NavBar/Footer'; 
@@ -20,8 +20,8 @@ const Approuter = () => {
           <Route path="/registerfutsal" element={<Registerfutsal/>} />
           <Route path="/loginasowner" element={<LoginAsowner/>} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/SignIn" element={<SignIn />} />
-          <Route path='/Contact' element={<UserPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path='/dashboard/:id' element={<UserPage />} />
           <Route path='/Book' element={<Book />} />
           <Route path="*" element={<NotFoundPage />} />
           </Routes>

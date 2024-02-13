@@ -19,13 +19,14 @@ func HandelLogin(c *gin.Context){
 
 	email := data.Email
 	password := data.Password
-  exist, err:= database.MakeSearchQuery(email,password)
+  id, err:= database.MakeSearchQuery(email,password)
   if err!=nil{
     c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
   }else{
 
-      if exist{
-          c.JSON(http.StatusOK, gin.H{"message": "Logged in "},)
+      if id!=0{
+          
+        c.JSON(http.StatusOK, gin.H{"message": "Logged in as user","user_id":id})
       }else{
          c.JSON(http.StatusBadRequest,gin.H{"Error":"Email or password is incorrect"})
     }

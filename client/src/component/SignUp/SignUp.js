@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 
 const SignUp=()=>{
+   const navigate= useNavigate(); 
    const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,6 +30,7 @@ const SignUp=()=>{
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        navigate("/SignIn");
       } else {
         console.error('Failed to submit form');
       }
