@@ -19,7 +19,7 @@ func HandelLogin(c *gin.Context){
 
 	email := data.Email
 	password := data.Password
-  id, err:= database.MakeSearchQuery(email,password)
+  id,err:= database.LoginQuery(email,password)
   if err!=nil{
     c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
   }else{

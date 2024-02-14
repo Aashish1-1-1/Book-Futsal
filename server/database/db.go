@@ -46,7 +46,7 @@ func MakeInsertQuery(query string,values ...interface{}) error {
 }
 
 
-func MakeSearchQuery(email string,password string) (int,error) {
+func LoginQuery(email string,password string) (int,error) {
   Init()
   var password1 string
   var id int
@@ -64,7 +64,18 @@ func MakeSearchQuery(email string,password string) (int,error) {
   fmt.Println("Password Matched")
   return id,nil
 }
+func MakeSearchQuery(query string) (*sql.Rows,error) {
+  Init()
+  rows,err :=Db.Query(query)
+  if err!=nil{
+    fmt.Println(err)
+    return rows,err
+  }
 
+  fmt.Println("Query done Successfully")
+  CloseDB()
+  return rows,nil
+}
 func CloseDB() {
 	if Db != nil {
 		Db.Close()
