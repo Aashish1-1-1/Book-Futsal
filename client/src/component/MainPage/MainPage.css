@@ -1,9 +1,9 @@
 .container{
   display: block;
-  flex-direction: column;
-  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
   align-items: center;
-  height: 100vh;
 }
 .butt{
       display: inline-block;
