@@ -24,7 +24,7 @@ const UserPage = () => {
   return (
     <div className="user-page-container">
       <h1>Welcome to Book-Futsal, Please select a futsal ground:</h1>
-      <div className="container">
+      <div className="containerU">
         {futsalList.map((futsal, index) => (
           <div className="futsal" key={index}>
             <h3>{futsal.name}</h3>

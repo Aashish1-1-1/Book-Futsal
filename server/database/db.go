@@ -64,9 +64,20 @@ func LoginQuery(email string,password string) (int,error) {
   fmt.Println("Password Matched")
   return id,nil
 }
-func MakeSearchQuery(query string) (*sql.Rows,error) {
+func Searchsmt(query string,values ...interface{}) (string,error) {
   Init()
-  rows,err :=Db.Query(query)
+  var data string
+  err := Db.QueryRow(query,values...).Scan(&data)
+  if err!=nil{
+    fmt.Println(err)
+    return "geda",err
+  }
+  CloseDB()
+  return data,nil 
+}
+func MakeSearchQuery(query string,values ...interface{}) (*sql.Rows,error) {
+  Init()
+  rows,err :=Db.Query(query,values...)
   if err!=nil{
     fmt.Println(err)
     return rows,err
