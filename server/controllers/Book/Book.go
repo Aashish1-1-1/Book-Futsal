@@ -12,17 +12,17 @@ import(
 
 func HandelBook(c *gin.Context){
   var data Booking.FormData  
-
+  id := c.Param("id")
+  user,_:=c.Get("user")
+  fmt.Println(id)
+  fmt.Println(user)
   if err:=c.ShouldBind(&data); err!=nil {
     c.JSON(http.StatusBadRequest,gin.H{"error":err.Error()})
     return
   }
-
 	time := data.Time
-	price := data.Price
-  query:=`insert into "TimeInterval"("time","price") values($1, $2)`
-  err:= database.MakeInsertQuery(query,time,price)
-  fmt.Println(time,price)
+  query :=`insert into "bookings"("user_id","ground_id","time_interval_id") values($1, $2, $3)`
+  err := database.MakeInsertQuery(query,user,id,time)
   if err!=nil{
   c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
   return

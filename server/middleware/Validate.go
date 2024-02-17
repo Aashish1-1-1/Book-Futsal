@@ -10,12 +10,11 @@ import (
 	"github.com/gin-gonic/gin"
   "github.com/golang-jwt/jwt/v5"
 
-	"bookfutsal/database"
+//	"bookfutsal/database"
 )
 
 func RequireAuth(c *gin.Context) {
 	tokenString, err := c.Cookie("Auth")
-  fmt.Println(tokenString)
 	if err != nil {
 		c.AbortWithStatus(http.StatusUnauthorized)
 		return
@@ -58,18 +57,17 @@ func RequireAuth(c *gin.Context) {
 		c.AbortWithStatus(http.StatusUnauthorized)
 		return
 	}
-  var user string
-  query := `SELECT "name" FROM "users" WHERE "user_id"=$1`
-  user, err = database.Searchsmt(query, int(userID))
-  if err!=nil{
-    c.AbortWithStatus(http.StatusInternalServerError)
-  }
-  fmt.Println("I am who",user)
-	if err != nil {
-		c.AbortWithStatus(http.StatusInternalServerError)
-		return
-	}
-
-	c.Set("user", user)
+//  var user string
+//  query := `SELECT "name" FROM "users" WHERE "user_id"=$1`
+//  user, err = database.Searchsmt(query, int(userID))
+//  if err!=nil{
+//    c.AbortWithStatus(http.StatusInternalServerError)
+//  }
+//	if err != nil {
+//		c.AbortWithStatus(http.StatusInternalServerError)
+//		return
+//	}
+//
+	c.Set("user", userID)
 	c.Next()
 }

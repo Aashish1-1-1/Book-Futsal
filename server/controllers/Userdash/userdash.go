@@ -15,8 +15,7 @@ type Ground struct {
 }
 
 func ThrowGrounds(c *gin.Context) {
-  user,_:=c.Get("user")
-  fmt.Println(user)
+ // fmt.Println(user)
 	query := `SELECT "id","name","location" FROM "ground"`
 	rows, err := database.MakeSearchQuery(query)
 	if err != nil {
