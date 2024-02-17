@@ -1,7 +1,9 @@
 # Book-Futsal
 Book-Futsal is a web portal where Futsal can be registered by owner and be booked by player.
 
-
+---
+# Tech-Stack
+![Stack](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/stack.png)
 ---
 # User-Interface
 
