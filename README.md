@@ -6,12 +6,12 @@ Book-Futsal is a web portal where Futsal can be registered by owner and be booke
 # User-Interface
 
 RegisterFutsal
-![Register](https://github.com/Aashish69-96/Book-Futsal/images/register.png)
+![Register](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/register.png)
 SignUp
-![Register](https://github.com/Aashish69-96/Book-Futsal/images/signup.png)
+![Register](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/signup.png)
 Login
-![Login](https://github.com/Aashish69-96/Book-Futsal/images/login.png)
+![Login](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/login.png)
 UserDashboard
-![Dashboard](https://github.com/Aashish69-96/Book-Futsal/images/dashboard.png)
+![Dashboard](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/dashboard.png)
 TimeInterval
-![Timeinterval](https://github.com/Aashish69-96/Book-Futsal/images/timeinterval.png)
+![Timeinterval](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/timeinterval.png)
