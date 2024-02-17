@@ -15,6 +15,7 @@ const Book = () => {
     ...formData,
     Time: selectedTimes,
     Price: selectedTimes.length * 1000,
+    GroundId:1
   });
 }, [selectedTimes]); // Remove formData from the dependency array
 
@@ -102,7 +103,8 @@ const Book = () => {
                 <input type="text" id="Time" name="Time" value={formData.Time} readOnly required />
                 <label htmlFor="Price">Price:</label>
                 <input type="number" id="Price" name="Price" value={formData.Price} readOnly required />
-
+                <label htmlFor="GroundId">Futsal:</label>
+                <input type="number" id="GroundId" name="GroundId" value={formData.GroundId} readOnly required />
                 <button type="submit">Book</button>
               </form>
           </div>

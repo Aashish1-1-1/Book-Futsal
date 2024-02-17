@@ -13,7 +13,6 @@ const UserPage = () => {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
             },
-            credentials: 'include',
         });
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -35,7 +34,7 @@ const UserPage = () => {
           <div className="futsal" key={index}>
             <h3>{futsal.name}</h3>
             <p>Location: {futsal.location}</p>
-            <Link to={`/futsal/${index}`}>Book</Link>
+            <Link to={`/futsal/${index+1}`}>Book</Link>
           </div>
         ))}
       </div>
