@@ -19,10 +19,12 @@ func Routes() *gin.Engine{
 
     router := gin.Default()
     router.Use(cors.Default())
-    router.POST("/login",Auth.HandelLogin)
-    router.POST("/signup",Auth.HandelSignUP)
-    router.POST("/book",Book.HandelBook)
-    router.POST("/registerfutsal",Auth.HandelFutsalRegister)
-    router.GET("/user/:id",middleware.RequireAuth,Userdash.ThrowGrounds)
+    router.POST("/api/login",Auth.HandelLogin)
+    router.POST("/api/signup",Auth.HandelSignUP)
+    router.POST("/api/book",Book.HandelBook)
+    router.POST("/api/registerfutsal",Auth.HandelFutsalRegister)
+    router.GET("/api/user/:id",middleware.RequireAuth,Userdash.ThrowGrounds)
     return router
 }
+
+

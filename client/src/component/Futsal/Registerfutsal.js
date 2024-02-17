@@ -34,7 +34,7 @@ const Registerfutsal = () => {
         formData1.append(key, value);
       });
       formData1.append("docImage", file);
-      const response = await fetch('http://localhost:6996/registerfutsal', {
+      const response = await fetch('http://localhost:6996/api/registerfutsal', {
         method: 'POST',
         body: formData1,
       });

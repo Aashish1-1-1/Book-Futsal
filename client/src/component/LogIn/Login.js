@@ -16,11 +16,12 @@ const Login=()=>{
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:6996/login', {
+      const response = await fetch('http://localhost:6996/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
+        credentials: 'include',
         body: new URLSearchParams(formData),
       });
 

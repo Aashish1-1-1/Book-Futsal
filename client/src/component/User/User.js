@@ -8,7 +8,13 @@ const UserPage = () => {
   useEffect(() => {
     const fetchFutsalData = async () => {
       try {
-        const response = await fetch("http://localhost:6996/user/:id");
+        const response = await fetch("http://localhost:6996/api/user/1",{
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            credentials: 'include',
+        });
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
