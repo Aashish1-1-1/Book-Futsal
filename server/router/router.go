@@ -21,7 +21,7 @@ func Routes() *gin.Engine{
     router.Use(cors.Default())
     router.POST("/api/login",Auth.HandelLogin)
     router.POST("/api/signup",Auth.HandelSignUP)
-    router.GET("/api/book",Book.ThrowFutsalDetails,Book.ThrowTimeInterval)
+    router.GET("/api/book/:id",Book.ThrowFutsalDetails,Book.ThrowTimeInterval)
     router.POST("/api/book",middleware.RequireAuth,Book.HandelBook)
     router.POST("/api/registerfutsal",Auth.HandelFutsalRegister)
     router.GET("/api/user/:id",Userdash.ThrowGrounds)

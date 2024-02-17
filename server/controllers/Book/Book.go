@@ -34,9 +34,10 @@ func HandelBook(c *gin.Context){
 
 func ThrowFutsalDetails(c *gin.Context) {
 	query:=`SELECT "open" FROM "ground" WHERE "id"=$1`
+  id := c.Param("id")
   var opentime string
   var closetime string
-  opentime, err := database.Searchsmt(query,4)
+  opentime, err := database.Searchsmt(query,id)
   if err != nil {
 		fmt.Println("Error:", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch grounds"})
@@ -48,7 +49,7 @@ func ThrowFutsalDetails(c *gin.Context) {
         return
   }
   query =`SELECT "close" FROM "ground" WHERE "id"=$1`
-  closetime, err = database.Searchsmt(query,4)
+  closetime, err = database.Searchsmt(query,id)
 
 	if err != nil {
 		fmt.Println("Error:", err)
@@ -65,8 +66,9 @@ func ThrowFutsalDetails(c *gin.Context) {
 }
 
 func ThrowTimeInterval(c *gin.Context){
+  id := c.Param("id")
   query:=`SELECT "time_interval_id" FROM "bookings" WHERE  "ground_id"=$1`
-  rows,err:=database.MakeSearchQuery(query,1)
+  rows,err:=database.MakeSearchQuery(query,id)
   if err != nil {
 		fmt.Println("Error:", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch grounds"})
