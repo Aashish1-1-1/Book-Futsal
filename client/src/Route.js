@@ -1,4 +1,5 @@
 import React from 'react';
+import {ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import MainPage from './component/MainPage/MainPage';
 import Login from './component/LogIn/Login';
@@ -15,6 +16,19 @@ const Approuter = () => {
     <Router>
       <div>
         <Navbar />
+
+        <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        />
         <Routes>
           <Route path="/" element={<MainPage/>} />
           <Route path="/registerfutsal" element={<Registerfutsal/>} />

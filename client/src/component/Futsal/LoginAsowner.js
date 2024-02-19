@@ -1,7 +1,8 @@
 
 import React, {useState} from 'react';
 import '../SignUp/SignUp.css';
-
+import SuccessToast from '../Toast/success';
+import ErrorToast from '../Toast/err';
 const LoginAsowner=()=>{
    const [formData, setFormData] = useState({
     email: '',
@@ -27,11 +28,14 @@ const LoginAsowner=()=>{
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        SuccessToast(result.message);
       } else {
         console.error('Failed to submit form');
+        ErrorToast('Futsal is not registered');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      ErrorToast('Error submitting form'+error);
     }
   }
 return(

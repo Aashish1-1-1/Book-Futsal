@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../SignUp/SignUp.css';
+import SuccessToast from '../Toast/success';
+import ErrorToast from '../Toast/err';
 
 const Registerfutsal = () => {
   const [formData, setFormData] = useState({
@@ -42,11 +44,14 @@ const Registerfutsal = () => {
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        SuccessToast(result.message)
       } else {
         console.error('Failed to submit form');
+        ErrorToast('Futsal already registerd')
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      ErrorToast('Error registering futsal')
     }
   };
 

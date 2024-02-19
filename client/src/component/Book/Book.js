@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Book.css';
+import SuccessToast from '../Toast/success';
+import ErrorToast from '../Toast/err';
 
 const Book = () => {
   const [formData, setFormData] = useState({
@@ -36,13 +38,13 @@ const Book = () => {
     fetchFutsaldetails();
   }, []);
 
-  useEffect(() => {
-    setFormData({
-      ...formData,
-      Time: selectedTimes.join(', '), // Join selected times into a string
-      Price: selectedTimes.length * 1000,
-    });
-  }, [selectedTimes]); // Update form data when selected times change
+useEffect(() => {
+  setFormData({
+    ...formData,
+    Time: selectedTimes.join(', '), // Join selected times into a string
+    Price: selectedTimes.length * 1000,
+  });
+}, [formData, selectedTimes]); // Update form data when selected times or formData change
 
   const handleTimeClick = (time) => {
     if (futsaldetails.bookedtimes.includes(time)) {
@@ -85,11 +87,14 @@ const Book = () => {
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        SuccessToast(result.message);
       } else {
         console.error('Failed to submit form');
+        ErrorToast('Failed to submit form')
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      ErrorToast('Error submitting form')
     }
   }
 

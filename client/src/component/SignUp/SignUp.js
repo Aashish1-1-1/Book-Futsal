@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
+import SuccessToast from '../Toast/success';
+import ErrorToast from '../Toast/err';
 
 const SignUp=()=>{
    const navigate= useNavigate(); 
@@ -30,12 +32,15 @@ const SignUp=()=>{
       if (response.ok) {
         const result = await response.json();
         console.log(result);
-        navigate("/SignIn");
+        SuccessToast(result.message);
+        navigate("/login");
       } else {
-        console.error('Failed to submit form');
+        console.error('Try another username/email taken');
+        ErrorToast('Try different username/email already registered');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      ErrorToast('Error submitting form'+error);
     }
   }
 return(
