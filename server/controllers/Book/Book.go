@@ -8,7 +8,11 @@ import(
   "github.com/gin-gonic/gin"
   "net/http"
 )
-
+type futsaldetails struct{
+   Opentime int `json:"opentime"`
+   Closetime int `json:"closetime"`
+   Bookedtimes []int `json:"bookedtimes"`
+}
 
 func HandelBook(c *gin.Context){
   var data Booking.FormData  
@@ -62,12 +66,8 @@ func ThrowFutsalDetails(c *gin.Context) {
       fmt.Println("Error parsing timestamp:",err)
       return
     }
-  c.JSON(http.StatusOK, gin.H{"opentime":parsedTime1.Hour(),"closetime":parsedTime2.Hour()})
-}
 
-func ThrowTimeInterval(c *gin.Context){
-  id := c.Param("id")
-  query:=`SELECT "time_interval_id" FROM "bookings" WHERE  "ground_id"=$1`
+  query =`SELECT "time_interval_id" FROM "bookings" WHERE  "ground_id"=$1`
   rows,err:=database.MakeSearchQuery(query,id)
   if err != nil {
 		fmt.Println("Error:", err)
@@ -92,6 +92,15 @@ func ThrowTimeInterval(c *gin.Context){
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error during iteration"})
 		return
 	}
-
-	c.JSON(http.StatusOK, bookedtimes)
+  fmt.Println(parsedTime1.Hour())
+  fmt.Println(parsedTime2.Hour())
+  fmt.Println(bookedtimes)
+    var futsaldetail futsaldetails
+    futsaldetail.Opentime=parsedTime1.Hour()
+    futsaldetail.Closetime=parsedTime2.Hour()
+    futsaldetail.Bookedtimes=bookedtimes
+  
+  fmt.Println(futsaldetail)
+  c.JSON(http.StatusOK, futsaldetail)
 }
+

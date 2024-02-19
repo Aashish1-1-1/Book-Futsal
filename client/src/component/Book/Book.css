@@ -46,7 +46,10 @@ h1 {
   color: #007bff;
   font-weight: bold;
 }
-
+.time-slot-booked{
+  background-color: red;
+  margin-top: 20px;
+}
 form {
   max-width: 300px;
   margin: 0 auto;
