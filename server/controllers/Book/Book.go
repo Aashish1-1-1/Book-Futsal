@@ -92,15 +92,10 @@ func ThrowFutsalDetails(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error during iteration"})
 		return
 	}
-  fmt.Println(parsedTime1.Hour())
-  fmt.Println(parsedTime2.Hour())
-  fmt.Println(bookedtimes)
     var futsaldetail futsaldetails
     futsaldetail.Opentime=parsedTime1.Hour()
     futsaldetail.Closetime=parsedTime2.Hour()
     futsaldetail.Bookedtimes=bookedtimes
-  
-  fmt.Println(futsaldetail)
   c.JSON(http.StatusOK, futsaldetail)
 }
 

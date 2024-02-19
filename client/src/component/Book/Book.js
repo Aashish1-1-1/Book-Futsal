@@ -46,7 +46,7 @@ const Book = () => {
 
   const handleTimeClick = (time) => {
     if (futsaldetails.bookedtimes.includes(time)) {
-      return; // Don't allow selecting booked times
+      return; 
     }
 
     setSelectedTimes(prevSelected => {
