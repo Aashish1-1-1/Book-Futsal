@@ -21,18 +21,27 @@ func HandelBook(c *gin.Context){
   fmt.Println(id)
   fmt.Println(user)
   if err:=c.ShouldBind(&data); err!=nil {
+    fmt.Println(err)
     c.JSON(http.StatusBadRequest,gin.H{"error":err.Error()})
     return
   }
 	time := data.Time
   query :=`insert into "bookings"("user_id","ground_id","time_interval_id") values($1, $2, $3)`
-  err := database.MakeInsertQuery(query,user,id,time)
-  if err!=nil{
-  c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
-  return
+  if len(time)>2{
+    c.JSON(http.StatusBadRequest,gin.H{"Error":"You can't book more than 2 intervals"})
   }else{
-  
- c.JSON(http.StatusOK, gin.H{"message": "Booked successfully"})
+
+    for i:=0; i<len(time); i++{
+
+       err := database.MakeInsertQuery(query,user,id,time[i])
+       if err!=nil{
+       c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
+       return
+       }else{
+       
+      c.JSON(http.StatusOK, gin.H{"message": "Booked successfully"})
+      }
+  }
   }
 }
 

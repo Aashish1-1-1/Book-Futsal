@@ -5,7 +5,7 @@ import ErrorToast from '../Toast/err';
 
 const Book = () => {
   const [formData, setFormData] = useState({
-    Time: "",
+    Time: [],
     Price: '',
   });
   const [futsaldetails, setFutsaldetails] = useState({
@@ -39,13 +39,12 @@ const Book = () => {
   }, []);
 
 useEffect(() => {
-  setFormData({
-    ...formData,
-    Time: selectedTimes.join(', '), // Join selected times into a string
+  setFormData(prevFormData => ({
+    ...prevFormData,
+    Time: selectedTimes, // Join selected times into a string
     Price: selectedTimes.length * 1000,
-  });
-}, [formData, selectedTimes]); // Update form data when selected times or formData change
-
+  }));
+}, [selectedTimes]);
   const handleTimeClick = (time) => {
     if (futsaldetails.bookedtimes.includes(time)) {
       return; 
