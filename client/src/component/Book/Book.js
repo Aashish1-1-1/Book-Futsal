@@ -20,7 +20,7 @@ const Book = () => {
   useEffect(() => {
     const fetchFutsaldetails = async () => {
       try {
-        const response = await fetch("http://localhost:6996/api/book/4", {
+        const response = await fetch("http://localhost:6996/api/book/3", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -45,20 +45,21 @@ useEffect(() => {
     Price: selectedTimes.length * 1000,
   }));
 }, [selectedTimes]);
-  const handleTimeClick = (time) => {
-    if (futsaldetails.bookedtimes.includes(time)) {
-      return; 
-    }
+const handleTimeClick = (time) => {
+  const isTimeBooked = futsaldetails.bookedtimes && futsaldetails.bookedtimes.includes(time);
 
-    setSelectedTimes(prevSelected => {
-      if (prevSelected.includes(time)) {
-        return prevSelected.filter(selected => selected !== time);
-      } else {
-        return [...prevSelected, time];
-      }
-    });
-  };
+  // If the time is booked, do nothing
+  if (isTimeBooked) {
+    return;
+  }
 
+  // Toggle the selection state
+  setSelectedTimes(prevSelected => (
+    prevSelected.includes(time)
+      ? prevSelected.filter(selected => selected !== time)
+      : [...prevSelected, time]
+  ));
+};
   const selectedTimesJSX = (
     <div>
       {selectedTimes.length > 0 && (
@@ -108,8 +109,8 @@ useEffect(() => {
               <div
                 key={time}
                 onClick={() => handleTimeClick(time)}
-                className={`time-slot ${futsaldetails.bookedtimes.includes(time) ? 'time-slot-booked' : (selectedTimes.includes(time) ? 'selected-time' : '')}`}
-              >
+                className={`time-slot ${futsaldetails.bookedtimes && futsaldetails.bookedtimes.includes(time) ? 'time-slot-booked' : (selectedTimes.includes(time) ? 'selected-time' : '')}`}
+              >       
                 {`${time}:00 - ${time + 1}:00`}
               </div>
             ))}
