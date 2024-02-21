@@ -35,7 +35,7 @@ func HandelBook(c *gin.Context){
 
        err := database.MakeInsertQuery(query,user,id,time[i])
        if err!=nil{
-       c.JSON(http.StatusInternalServerError,gin.H{"Error":"Some server error "})
+       c.JSON(http.StatusBadRequest,gin.H{"Error":"Already booked"})
        return
        }else{
        

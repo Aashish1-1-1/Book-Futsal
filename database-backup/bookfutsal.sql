@@ -204,8 +204,6 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.bookings (booking_id, user_id, ground_id, time_interval_id) FROM stdin;
-1	1	1	1
-2	1	4	1
 \.
 
 
@@ -216,8 +214,6 @@ COPY public.bookings (booking_id, user_id, ground_id, time_interval_id) FROM std
 COPY public.ground (id, name, location, contact, email, password, open, close, document_path, verification_status) FROM stdin;
 1	SR futsal	dhulikhel	9867742787	aa03228322@student.ku.edu.np	dfasfds	10:42:00	10:41:00	assets/groundSR futsalalbert.png	f
 2	KU futsal	Budol	9867742787	kufut123@gmail.com	kutwhoni	10:23:00	10:24:00	assets/groundKU futsalalbert.png	f
-3	KU futsa	Budol	9867742787	kufut123@gmail.com	kutwhoni	10:23:00	10:24:00	assets/groundKU futsaalbert.png	f
-4	BaudoFutsal	Thimi	98677323434	baudo@gmail.com	Hero@123#	05:00:00	21:00:00	assets/groundBaudoFutsalalbert.png	f
 \.
 
 
@@ -259,7 +255,6 @@ COPY public.timeinterval (time_interval_id, time_interval_start, time_interval_e
 
 COPY public.users (user_id, name, contact, email, password, document_image_path) FROM stdin;
 1	Aashish	9867742787	aashish@gmail.com	Aashish@123#	\N
-2	Aashish112	9867742787	aashishkolamo@gmail.com	muji123	\N
 \.
 
 
@@ -267,14 +262,14 @@ COPY public.users (user_id, name, contact, email, password, document_image_path)
 -- Name: bookings_booking_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aashish
 --
 
-SELECT pg_catalog.setval('public.bookings_booking_id_seq', 7, true);
+SELECT pg_catalog.setval('public.bookings_booking_id_seq', 1, false);
 
 
 --
 -- Name: ground_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aashish
 --
 
-SELECT pg_catalog.setval('public.ground_id_seq', 4, true);
+SELECT pg_catalog.setval('public.ground_id_seq', 3, false);
 
 
 --
@@ -288,7 +283,7 @@ SELECT pg_catalog.setval('public.timeinterval_time_interval_id_seq', 24, true);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: aashish
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 32, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 2, false);
 
 
 --
