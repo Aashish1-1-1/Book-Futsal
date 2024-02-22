@@ -212,8 +212,8 @@ COPY public.bookings (booking_id, user_id, ground_id, time_interval_id) FROM std
 --
 
 COPY public.ground (id, name, location, contact, email, password, open, close, document_path, verification_status) FROM stdin;
-1	SR futsal	dhulikhel	9867742787	aa03228322@student.ku.edu.np	dfasfds	10:42:00	10:41:00	assets/groundSR futsalalbert.png	f
-2	KU futsal	Budol	9867742787	kufut123@gmail.com	kutwhoni	10:23:00	10:24:00	assets/groundKU futsalalbert.png	f
+1	SR futsal	dhulikhel	9867742567	aa032@student.ku.edu.np	dfasfds	10:42:00	10:41:00	assets/groundSR futsalalbert.png	f
+2	KU futsal	Budol	9867746787	kufut123@gmail.com	kutwhoni	10:23:00	10:24:00	assets/groundKU futsalalbert.png	f
 \.
 
 
@@ -254,7 +254,7 @@ COPY public.timeinterval (time_interval_id, time_interval_start, time_interval_e
 --
 
 COPY public.users (user_id, name, contact, email, password, document_image_path) FROM stdin;
-1	Aashish	9867742787	aashish@gmail.com	Aashish@123#	\N
+1	Aashish	9867745687	aashish@gmail.com	Aashish@13#	\N
 \.
 
 
