@@ -1,10 +1,11 @@
 # Book-Futsal
-Book-Futsal is a web portal where Futsal can be registered by owner and be booked by player.
 
----
+## Book-Futsal is a web portal where Futsal can be registered by owner and be booked by player.
+
 # Tech-Stack
-![Stack](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/stack.png)
----
+
+## ![Stack](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/stack.png)
+
 # User-Interface
 
 RegisterFutsal
@@ -21,6 +22,5 @@ Responsiveness
 ![Responsive](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/Responsive.png)
 
 # ER-Daigram
-
 
 ![Database](https://github.com/Aashish69-96/Book-Futsal/blob/main/images/database.png)
